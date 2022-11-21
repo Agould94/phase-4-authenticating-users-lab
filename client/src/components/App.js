@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import Article from "./Article";
 import Header from "./Header";
 import Home from "./Home";
@@ -7,6 +7,7 @@ import Login from "./Login";
 
 function App() {
   const [user, setUser] = useState(null);
+  let history = useHistory()
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -17,6 +18,7 @@ function App() {
   }, []);
 
   function handleLogin(user) {
+    history.push('/')
     setUser(user);
   }
 
